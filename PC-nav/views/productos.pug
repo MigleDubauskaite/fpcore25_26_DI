@@ -1,0 +1,23 @@
+doctype html 
+html    
+    head 
+        meta(charset="UTF-8")
+        title Navegación usando Express y Pug
+
+    body 
+        h1 Productos
+
+        -var n = 0;
+        ul 
+            while n < 4
+                li #{n}
+                -n++   
+
+        nav 
+            ul 
+                li: a(href="/") Inicio
+        
+
+        block content
+       
+         

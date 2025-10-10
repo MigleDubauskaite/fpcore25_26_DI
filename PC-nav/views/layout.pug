@@ -1,0 +1,21 @@
+doctype html 
+html    
+    head 
+        meta(charset="UTF-8")
+        title Navegación usando Express y Pug #{pagina}
+         link(rel="stylesheet", href="/css/reset.css")
+        link(rel="stylesheet", href="/css/general.css")
+
+    body 
+        nav 
+            button(type="button" class='icono' data-tipo="tooltip" data-titulo="Guardar cambios") 💾
+            ul 
+                li: a(href="/productos", class = pagina === "Productos" ? "actual" : "") Productos
+                li: a(href="/contacto", class = pagina === "Contacto" ? "actual" : "") Contacto
+
+        block content
+        script(src="/js/boton.js") 
+        script(src="/js/ventanaModal.js") 
+        script(src="/js/formulario.js") 
+        script(src="/js/codex.js") 
+
