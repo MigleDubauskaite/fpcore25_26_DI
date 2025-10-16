@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <style>
+        #externo{
+            border: 1px solid blue;
+            margin: 10px;
+        }
+        #medio{
+            border: 1px solid red;
+            margin: 10px;
+        }
+        #interno{
+            border: 1px solid black;
+            margin: 10px
+        }
+    </style>
+</head>
+<body>
+    <div id="externo">
+        <div id="medio">
+            <div id="interno">
+                <button>Click</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const btnExterno = document.getElementById('externo');
+        const btnMedio = document.getElementById('medio');
+        const btnInterno = document.getElementById('interno');
+        const click = document.querySelector('button');
+
+        //Fase burbujeo
+        click.addEventListener('click', () => console.log('Click-Fase burbujeo'));
+        //que no haga el siguiente
+        interno.addEventListener('click', () => console.log('Interno-Fase burbujeo'));
+        medio.addEventListener('click', () => console.log('Medio-Fase Burbujeo'));
+        externo.addEventListener('click', () => console.log('Externo-Fase Burbujeo'));
+
+        //Fase captura
+        click.addEventListener('click', () => console.log('click-Fase Captura'), true);
+        interno.addEventListener('click', () => console.log('Interno-Fase Captura'), true);
+        medio.addEventListener('click', () => console.log('Medio-Fase Captura'), true);
+        externo.addEventListener('click', () => console.log('Externo-Fase Captura'), true);
+
+       /*  medio.addEventListener('click', (e) =>{
+            e.stopPropagation();
+            console.log(`La propagacion se paró en el medio en fase de captura`);
+        },true); */
+
+    </script>
+    
+</body>
+</html>
