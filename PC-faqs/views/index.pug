@@ -2,6 +2,9 @@ doctype html
 html
   head
     title= titulo
+    link(rel="stylesheet", href="/css/reset.css")
+    link(rel="stylesheet", href="/css/general.css")
   body
-    h1= mensaje
-    p Esto es Pug, HTML limpio y dinámico.
+    h1= titulo
+    section(id="container")
+    script(src="/js/codex.js") 
