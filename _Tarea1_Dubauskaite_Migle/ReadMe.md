@@ -1,51 +1,30 @@
-# **Enunciado:** 
+Enunciado:
 
+Tarea 1. Creación de un componente visual de reproducción de vídeo con Pug, Express y JavaScript.
+Documentación del funcionamiento de la clase y su implementación:
 
+Esta clase se llama VideoPlayer y sirve para crear un reproductor de video con JavaScript, sin usar librerías externas. Muestra un título, un video, dos botones (Play y Pause) y el tiempo reproducido junto con el tiempo restante.
 
-###### **Tarea 1. Creación de un componente visual de reproducción de vídeo con Pug, Express y JavaScript.**
+Para poder utilizarla, es necesario tener un proyecto de Express y Pug iniciado. Puedes hacerlo de la siguiente manera:
 
+Crea una carpeta donde quieras crear el proyecto.
+Inicia el proyecto con el comando npm init -y.
+Escribe el comando npm install express pug para instalar las dependencias necesarias.
+Crea un archivo app.js en la raíz del proyecto.
+Crea las carpetas views y public.
+Sube el archivo video.js dentro de la carpeta public/js.
 
+Para utilizar la instancia del objeto, solo necesitas tener un archivo Pug y un archivo JavaScript.
+En el archivo Pug no hace falta crear ningún div para el reproductor, ya que la clase lo genera automáticamente.
+Solo tienes que enlazar el script al final del body, de esta forma:
 
-Creamos una clase llamada VideoPlayer que permite generar dinámicamente los videos en el documento HTML.
+script(src="/js/video.js")
 
-La clase debe tener un array interno de videos donde se guardarán los objetos de cada video agregado.
-
-
-
-Debe incluir un método agregarVideo({src}) que añada un nuevo video al array de videos.
-
-
-
-
-
-###### **Documentación del funcionamiento de la clase y su implementación:**
-
-
-
-Para crear la instancia del reproductor de video, sigue estos pasos:
-
-
-
-* Crea carpeta donde quieres subir el proyecto.
-* Lo debes iniciar con el comando npm init -y.
-* Escribe el comando "npm install express pug" para instalar las dependencias.
-* Crea archivo app.js en la raíz del proyecto.
-* Crea carpetas views y public.
-* Sube el archivo video.js a la carpeta public/js.
-* Enlaza el archivo index.pug con video.js utilizando la etiqueta script( *script(src="/js/video.js")* ).
-* Crea una instancia de la clase VideoPlayer dentro de tu archivo video.js.
-
-
-
-**Por ejemplo:**
+En tu archivo video.js se encuentra la clase. Para crear un reproductor, debes crear una instancia de VideoPlayer y luego añadirle un video con el método agregarVideo. Por ejemplo:
 
 const video = new VideoPlayer("Olas del mar");
+video.agregarVideo({ src: "/video/video1.mp4" });
 
-video.agregarVideo({
+Cuando abras la página en el navegador, verás el título del video, el reproductor, los botones de Play y Pause, y los textos que muestran el tiempo reproducido y el tiempo restante.
 
-&nbsp; src: "/video/video1.mp4",
-
-});
-
-
-
+Si quieres cambiar los colores o el aspecto de los botones, puedes hacerlo desde tu archivo CSS (misEstilos.css).

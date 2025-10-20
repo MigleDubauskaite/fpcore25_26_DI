@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Reproductor de Video VideoPlayer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #e8d5f2 0%, #d4e6f1 100%);
+            color: #2c3e50;
+            padding: 50px 40px;
+            text-align: center;
+            border-bottom: 3px solid #d4a5e0;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            color: #34495e;
+            font-weight: 400;
+        }
+
+        main {
+            padding: 45px 40px;
+        }
+
+        h2 {
+            color: #8e7cc3;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 1.7em;
+            font-weight: 600;
+            border-bottom: 2px solid #d4a5e0;
+            padding-bottom: 12px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #6b5b95;
+            margin-top: 28px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #34495e;
+            line-height: 1.7;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border-left: 3px solid #8e7cc3;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .step {
+            background: #f5f1fa;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 7px;
+            border-left: 3px solid #d4a5e0;
+        }
+
+        .step strong {
+            color: #6b5b95;
+        }
+
+        .folder-structure {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+            border-left: 3px solid #8e7cc3;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+        }
+
+        table th {
+            background: #e8d5f2;
+            color: #2c3e50;
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #d4a5e0;
+        }
+
+        table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #ecf0f1;
+            color: #34495e;
+        }
+
+        table tr:hover {
+            background: #fafbfc;
+        }
+
+        .section-highlight {
+            background: #fef9e7;
+            border-left: 3px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            color: #7d6608;
+        }
+
+        .success {
+            background: #d5f4e6;
+            border-left: 3px solid #27ae60;
+            padding: 16px;
+            margin: 18px 0;
+            border-radius: 6px;
+            color: #1e5631;
+        }
+
+        .warning {
+            background: #fadbd8;
+            border-left: 3px solid #e74c3c;
+            padding: 16px;
+            margin: 18px 0;
+            border-radius: 6px;
+            color: #78281f;
+        }
+
+        ul,
+        ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin: 25px 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #f5f1fa 0%, #eef5fb 100%);
+            padding: 22px;
+            border-radius: 8px;
+            border: 1px solid #d4a5e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-item strong {
+            color: #6b5b95;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .feature-item p {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            main {
+                padding: 30px 20px;
+            }
+
+            header {
+                padding: 30px 20px;
+            }
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 35px 40px;
+            text-align: center;
+            color: #34495e;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        footer h3 {
+            margin-top: 0;
+            color: #6b5b95;
+            font-size: 1.3em;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #6b5b95;
+        }
+
+        .emoji {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="emoji">🎬</span>VideoPlayer</h1>
+            <p class="subtitle">Reproductor de Video Personalizado para tu Proyecto Web</p>
+        </header>
+
+        <main>
+            <!-- ¿QUÉ ES ESTO? -->
+            <h2><span class="emoji">📖</span>Descripción</h2>
+            <p><strong>VideoPlayer</strong> es una herramienta que permite crear un reproductor de video personalizado
+                en tu página web de forma simple. Proporciona una solución completa sin dependencias externas,
+                incluyendo controles de reproducción, pausa y visualización de tiempo en tiempo real.</p>
+
+            <!-- INSTALACIÓN -->
+            <h2><span class="emoji">⚙️</span>Instalación</h2>
+
+            <h3>Paso 1: Preparar el Proyecto</h3>
+            <p>Abre tu terminal y ejecuta los siguientes comandos:</p>
+
+            <div class="step">
+                <strong>1.1 Crear directorio del proyecto:</strong>
+                <div class="code-block">mkdir mi-proyecto-video<br>cd mi-proyecto-video</div>
+            </div>
+
+            <div class="step">
+                <strong>1.2 Inicializar npm:</strong>
+                <div class="code-block">npm init -y</div>
+            </div>
+
+            <div class="step">
+                <strong>1.3 Instalar dependencias:</strong>
+                <div class="code-block">npm install express pug</div>
+            </div>
+
+            <h3>Paso 2: Estructura de Directorios</h3>
+            <p>Crea la siguiente estructura en la raíz del proyecto:</p>
+            <div class="folder-structure">
+                mi-proyecto-video/<br>
+                ├── app.js<br>
+                ├── views/<br>
+                │ └── index.pug<br>
+                ├── public/<br>
+                │ ├── js/<br>
+                │ │ └── video.js<br>
+                │ ├── css/<br>
+                │ │ └── estilos.css<br>
+                │ └── videos/<br>
+                │ └── video1.mp4<br>
+            </div>
+
+            <h3>Paso 3: Configuración del Servidor</h3>
+            <p>En el archivo <code>app.js</code>, añade el siguiente código:</p>
+            <div class="code-block">
+                const express = require('express');<br>
+                const app = express();<br>
+                <br>
+                app.set('view engine', 'pug');<br>
+                app.use(express.static('public'));<br>
+                <br>
+                app.get('/', (req, res) => {<br>
+                &nbsp;&nbsp;res.render('index');<br>
+                });<br>
+                <br>
+                app.listen(3000, () => {<br>
+                &nbsp;&nbsp;console.log('Servidor iniciado en: http://localhost:3000');<br>
+                });
+            </div>
+
+            <!-- CÓMO USAR -->
+            <h2><span class="emoji">🚀</span>Uso</h2>
+
+            <h3>Configurar la Página (index.pug)</h3>
+            <div class="code-block">
+                doctype html<br>
+                html<br>
+                &nbsp;&nbsp;head<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;title Mi Reproductor de Video<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;link(rel="stylesheet" href="/css/estilos.css")<br>
+                &nbsp;&nbsp;body<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;h1 Bienvenido a mi sitio<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;script(src="/js/video.js")<br>
+            </div>
+
+            <h3>Implementar el Reproductor</h3>
+            <p>En tu archivo JavaScript, instancia la clase <code>VideoPlayer</code>:</p>
+            <div class="code-block">
+                // Crear reproductor<br>
+                const miVideo = new VideoPlayer("Título de mi video");<br>
+                <br>
+                // Agregar video<br>
+                miVideo.agregarVideo({ src: "/videos/video1.mp4" });
+            </div>
+
+            <div class="success">
+                <strong>✓ Listo</strong> El reproductor estará disponible al abrir <code>http://localhost:3000</code>
+            </div>
+
+            <!-- LO QUE VERÁS -->
+            <h2><span class="emoji">✨</span>Características</h2>
+            <p>El reproductor incluye los siguientes elementos:</p>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>📺 Título del Video</strong>
+                    <p>Se muestra de forma clara en la parte superior del reproductor</p>
+                </div>
+                <div class="feature-item">
+                    <strong>▶️ Reproductor Integrado</strong>
+                    <p>Visualización completa del video en alta calidad</p>
+                </div>
+                <div class="feature-item">
+                    <strong>⏯️ Controles Intuitivos</strong>
+                    <p>Botones para reproducir y pausar el contenido</p>
+                </div>
+                <div class="feature-item">
+                    <strong>⏱️ Indicador de Tiempo</strong>
+                    <p>Muestra tiempo reproducido y tiempo total del video</p>
+                </div>
+            </div>
+
+
+            <!-- AYUDA -->
+            <h2><span class="emoji">📚</span>Soporte</h2>
+            <div class="section-highlight">
+                <ul>
+                    <li>Verifica que todas las rutas sean correctas</li>
+                    <li>Asegúrate de que el servidor está ejecutándose</li>
+                    <li>Consulta la consola del navegador para mensajes de error</li>
+                    <li>Revisa que los permisos de archivo sean correctos</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <h3><span class="emoji">✓</span>¡Proyecto completado!</h3>
+            <p>Ahora tienes un reproductor de video personalizado y funcional en tu aplicación web.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
