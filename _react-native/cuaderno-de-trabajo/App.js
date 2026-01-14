@@ -1,57 +1,107 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 
 export default function App() {
   return (
-
-    <View style={styles.entero}>
-      <Text style={{ padding: 30, fontSize: 30, fontStyle: 'bold' }}>Hola</Text>
-
+    <>
       <View style={styles.container}>
+        {/* Mitad superior (azul) */}
+        <View style={[styles.hemi, { backgroundColor: "cyan" }]}>
+          <View style={styles.cajaUser}>
+            <Image
+              source={require("./assets/mama-fratelli.png")}
+              style={styles.imagenUser}
+            />
+            <View style={styles.botonEditar}>
+              <Image
+                source={require("./assets/setting.png")}
+                style={styles.editar}
+              />
+            </View>
+            <Text style={styles.nombre}>Mamá Fratelli</Text>
+          </View>
+        </View>
 
-        <View style={[styles.caja, { backgroundColor: '#FF3F7F' }]} ><Text>Caja 1</Text></View>
-        <View style={[styles.caja, { backgroundColor: '#FFC400', color: '#ECF4E8' }]}><Text>Caja 2</Text></View>
-        <View style={[styles.caja, { backgroundColor: '#B3BFFF' }]}><Text>Caja 3</Text></View>
-
-         
-
-        {/* <View style={styles.cajita}>
-        <Text>M</Text>
-        <Text>D</Text>
-      </View> */}
-
+        {/* Mitad inferior (blanca) */}
+        <View style={[styles.hemi, { backgroundColor: "white" }]}>
+          <View style={styles.icon}>
+            <Image
+              source={require("./assets/details.png")}
+              style={styles.editar}
+            />
+            <Text>Mostrar detalles</Text>
+            <Image
+              source={require("./assets/arrow.png")}
+              style={styles.arrow}
+            />
+          </View>
+        </View>
       </View>
-
-    </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-
-  entero: {
-    flex: 1,
-    backgroundColor: '#8FABD4',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#435663',
-
-  },
-
   container: {
-
-    flexDirection: 'row',
-    gap: 15,
+    flex: 1,
+    flexDirection: "column", // de arriba a abajo
   },
 
-  caja: {
-    backgroundColor: '#FFF8D4',
-    padding: 30,
-    borderRadius: 40,
+  hemi: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
-  /*   cajita: {
-      margin: 10,
-      gap: 20,
-       backgroundColor: '#FFF8D4',
-       flexDirection: 'row',
-    } */
+  cajaUser: {
+    width: 220,
+    height: 150,
+    alignItems: "center",
+  },
+
+  imagenUser: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    position: "relative",
+  },
+
+  nombre: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+    marginTop: 5,
+  },
+
+  botonEditar: {
+    width: 42,
+    height: 42,
+    borderRadius: 75,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "black",
+    borderWidth: 1,
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+  },
+
+  editar: {
+    width: 20,
+    height: 23,
+    marginRight: 8,
+  },
+
+  arrow: {
+    width: 20,
+    height: 23,
+    marginLeft: 20,
+  },
+  icon: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 15,
+    height: 15,
+  },
 });
